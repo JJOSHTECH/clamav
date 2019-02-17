@@ -5,17 +5,20 @@ FROM debian:latest
 RUN apt update && apt full-upgrade -y && apt autoremove && apt clean
 
 # Install ClamAV Deamon
-RUN apt install clamav-deamon -y
+RUN apt install clamav clamav-deamon -y
 
-# Setup clamav with dpkg
-RUN dpkg-reconfigure clamav-base
-RUN freshcalm
+# Configuration Volumes
+VOLUME ["/var/lib/clamav","/etc/clamav/clamd.conf","/etc/systemd/system/clamav-daemon.service.d/extend.conf"]
 
-# Copy sshd config to Image
-COPY ./conf/sshd_config /etc/ssh/sshd_config
+# Download Virus Signatures
+RUN freshclam
 
-# Start SSH Server in Debug mode
-CMD ["/usr/sbin/sshd","-p","22","-D","-e"]
+# Copy default clamd configuration into container
+COPY ./conf/clamd.conf /etc/clamav/clamd.conf
+COPY ./conf/extend.conf /etc/systemd/system/clamav-daemon.service.d/extend.conf
 
-# Expose ssh Port
-EXPOSE 22
+# Expose clamd port
+EXPOSE 666
+
+# Start CLAMAV in foregournd
+ENTRYPOINT ["clamd","--foreground=true"]
