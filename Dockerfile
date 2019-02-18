@@ -8,7 +8,7 @@ RUN apt update && apt full-upgrade -y && apt autoremove && apt clean
 RUN apt install clamav clamav-daemon -y
 
 # Configuration Volumes
-VOLUME ["/var/lib/clamav","/etc/clamav/clamd.conf","/etc/systemd/system/clamav-daemon.service.d/extend.conf"]
+VOLUME ["/var/lib/clamav/","/etc/clamav/","/etc/systemd/system/clamav-daemon.service.d/"]
 
 # Download Virus Signatures
 RUN freshclam
