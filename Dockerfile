@@ -5,7 +5,7 @@ FROM debian:latest
 RUN apt update && apt full-upgrade -y && apt autoremove && apt clean
 
 # Install ClamAV Deamon
-RUN apt install clamav clamav-deamon -y
+RUN apt install clamav clamav-daemon -y
 
 # Configuration Volumes
 VOLUME ["/var/lib/clamav","/etc/clamav/clamd.conf","/etc/systemd/system/clamav-daemon.service.d/extend.conf"]
