@@ -11,7 +11,7 @@ RUN apt install clamav clamav-daemon -y
 VOLUME ["/var/lib/clamav/","/etc/clamav/","/etc/systemd/system/clamav-daemon.service.d/"]
 
 # Download Virus Signatures
-RUN freshclam
+CMD ["freshclam"]
 
 # Copy default clamd configuration into container
 COPY ./conf/clamd.conf /etc/clamav/clamd.conf
@@ -21,4 +21,4 @@ COPY ./conf/extend.conf /etc/systemd/system/clamav-daemon.service.d/extend.conf
 EXPOSE 3310
 
 # Start CLAMAV in foregournd
-CMD ["clamd","--foreground=true"]
+ENTRYPOINT ["clamd","--foreground=true"]
