@@ -14,8 +14,9 @@ VOLUME ["/var/lib/clamav/","/etc/clamav/","/etc/systemd/system/clamav-daemon.ser
 COPY ./conf/clamd.conf /etc/clamav/clamd.conf
 COPY ./conf/extend.conf /etc/systemd/system/clamav-daemon.service.d/extend.conf
 
-# ADD startUP.sh script into container
-ADD ./startUP.sh /usr/local/sbin/
+# ADD startUP.sh script into container and make runable
+COPY ./startUP.sh /bin/startUP.sh
+RUN chmod +x /bin/startUP.sh
 
 # Expose clamd port
 EXPOSE 3310
