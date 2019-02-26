@@ -4,4 +4,4 @@
 freshclam
 
 # Start ClamAV
-clamd --foreground=true
+COMMAND="clamd --foreground=true"
