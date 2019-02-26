@@ -18,7 +18,7 @@ COPY ./conf/clamd.conf /etc/clamav/clamd.conf
 COPY ./conf/extend.conf /etc/systemd/system/clamav-daemon.service.d/extend.conf
 
 # Expose clamd port
-EXPOSE 666
+EXPOSE 3310
 
 # Start CLAMAV in foregournd
-ENTRYPOINT ["clamd","--foreground=true"]
+CMD ["clamd","--foreground=true"]
