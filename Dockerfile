@@ -15,12 +15,12 @@ COPY ./conf/clamd.conf /etc/clamav/clamd.conf
 COPY ./conf/extend.conf /etc/systemd/system/clamav-daemon.service.d/extend.conf
 
 # ADD startUP.sh script into container and make runable
-COPY ./startUP.sh /bin/startUP.sh
-RUN chmod +x /bin/startUP.sh
+COPY ./startUP.sh ./startUP.sh
+RUN chmod +x ./startUP.sh
 
 # Expose clamd port
 EXPOSE 3310
 
 # Start Update Virus Database and CLAMAV in foregournd
-ENTRYPOINT ["startUP.sh"]
+ENTRYPOINT ["./startUP.sh"]
 CMD ["clamav"]
