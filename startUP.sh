@@ -4,7 +4,7 @@
 freshclam
 
 # set ClamAV env
-COMMAND="whoami; env; clamd --foreground=true;"
+COMMAND="env; clamd --foreground=true;"
 
 # Starting Container
 echo "Starting container .."
