@@ -3,8 +3,11 @@
 # Update Antivirus Database
 freshclam
 
+whoami
+env
+
 # set ClamAV env
-COMMAND="env; clamd --foreground=true;"
+COMMAND="clamd --foreground=true"
 
 # Starting Container
 echo "Starting container .."
