@@ -26,5 +26,4 @@ EXPOSE 3310
 
 # Start Update Virus Database and CLAMAV in foregournd
 ENTRYPOINT ["./startUP.sh"]
-CMD ["whoami"]
 CMD ["clamav"]

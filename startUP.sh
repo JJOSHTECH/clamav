@@ -3,9 +3,6 @@
 # Update Antivirus Database
 freshclam
 
-whoami
-env
-
 # set ClamAV env
 COMMAND="clamd --foreground=true"
 
