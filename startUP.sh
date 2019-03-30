@@ -3,6 +3,9 @@
 # Update Antivirus Database
 freshclam
 
+#Include cronjob into crontab
+crontab /etc/cron.d/cronjob
+
 # set ClamAV env
 COMMAND="clamd --foreground=true"
 
