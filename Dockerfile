@@ -1,5 +1,5 @@
 # Use a Debian Image
-FROM arm32v7/debian:latest
+FROM arm32v7/debian:stretch-slim
 
 #ARM Support
 COPY qemu-arm-static /usr/bin
