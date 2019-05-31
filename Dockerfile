@@ -1,5 +1,5 @@
 # Use a Debian Image
-FROM debian:latest
+FROM debian:unstable-slim
 
 # Update and Upgrade Repo
 RUN apt update && apt full-upgrade -y && apt autoremove && apt clean
